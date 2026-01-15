@@ -1,5 +1,4 @@
 {
-{
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "waitFor": "onCreateCommand",
@@ -49,11 +48,9 @@
   },
   "features": {
     "ghcr.io/itsmechlark/features/postgresql:1": {
-      "version": "18.1",
+      "version": "18.1"}
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.13", "installTools": "true", 
-    }
+      "version": "3.13", "installTools": "true"}
     }
   }
-}
-}
+
