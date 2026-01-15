@@ -1,0 +1,59 @@
+{
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "",
+  "postCreateCommand": "pip install --user -r requirements.txt && python manage.py migrate",
+  "postAttachCommand": {
+    "server": "python manage.py runserver"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "kevinrose.vsc-python-indent",
+        "ms-python.python",
+        "ms-python.autopep8",
+        "ms-azuretools.vscode-docker",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "donjayamanne.python-extension-pack",
+        "davidanson.vscode-markdownlint",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg"
+      ],
+      "settings": {
+        "sqltools.connections": [
+          {
+            "name": "Container database",
+            "driver": "PostgreSQL",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "database": "app",
+            "username": "app",
+            "password": "app_password"
+          }
+        ]
+      }
+    },
+    "portsAttributes": {
+      "8000": {
+        "label": "Application"
+      }
+    },
+    "forwardPorts": [
+      8000,
+      5432
+    ]
+  },
+  "features": {
+    "ghcr.io/itsmechlark/features/postgresql:1": {
+      "version": "18.1",
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.13", "installTools": "true", 
+    }
+    }
+  }
+}
+}
